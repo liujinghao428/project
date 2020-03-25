@@ -1,5 +1,8 @@
 package com.star.dream.project.constant;
 
+/**
+ * 常数类
+ */
 public class Constant {
 
     public final class ResultCode{
@@ -9,7 +12,6 @@ public class Constant {
 
     }
     public final class ResultMsg{
-
         public static final String SUCCESS_MESSAGE = "请求成功";
         public static final String ERROR_MESSAGE = "未知错误";
         public static final String MY_EXCEPTION_MESSAGE = "请求出错";

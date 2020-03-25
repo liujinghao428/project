@@ -1,7 +1,7 @@
 package com.star.dream.project.aop;
 
-import com.star.dream.project.constant.Constant;
 import com.star.dream.project.exception.MyException;
+import com.star.dream.project.utils.ResponseUtils;
 import com.star.dream.project.vo.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -67,10 +67,10 @@ public class AopAspect {
         } catch (Throwable ex) {
             if (ex instanceof MyException) {
                 MyException e = (MyException) ex;
-                result = BaseResponse.builder().code(e.getCode()).msg(e.getMsg()).build();
+                result = ResponseUtils.buildFail(e.getCode(),e.getMsg());
                 log.error(String.format("调用接口%s异常，错误信息:%s", interfaceName, e.getMsg()), e);
             } else {
-                result = BaseResponse.builder().code(Constant.ResultCode.ERROR_CODE).msg(Constant.ResultMsg.ERROR_MESSAGE).build();
+                result = ResponseUtils.buildFail();
                 log.error(String.format("调用接口%s异常，错误信息:%s", interfaceName, ex.toString()), ex);
             }
         }

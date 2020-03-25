@@ -31,6 +31,8 @@ public class BaseResponse<T> {
                 .append(msg).append('\"');
         sb.append(",\"data\":")
                 .append(data);
+        sb.append(",\"success\":")
+                .append(success);
         sb.append(",\"traceId\":\"")
                 .append(traceId).append('\"');
         sb.append("}");
