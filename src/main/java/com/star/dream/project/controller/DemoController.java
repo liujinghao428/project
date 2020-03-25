@@ -19,11 +19,11 @@ public class DemoController {
     @GetMapping("demo")
     public BaseResponse demo(String str){
         log.info("str:{}",str);
-        if ("123".equals(str)){
-            throw new MyException(Constant.ResultCode.MY_EXCEPTION_CODE,Constant.ResultMsg.MY_EXCEPTION_MESSAGE);
-        }
         if (StringUtils.isEmpty(str)){
             throw new NullPointerException();
+        }
+        if ("123".equals(str)){
+            throw new MyException(Constant.ResultCode.MY_EXCEPTION_CODE,Constant.ResultMsg.MY_EXCEPTION_MESSAGE);
         }
         return ResponseUtils.buildSuccess();
     }
