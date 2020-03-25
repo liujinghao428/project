@@ -14,6 +14,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 /**
  * AOP
  */
@@ -31,16 +33,8 @@ public class AopAspect {
      */
     @Before(value = "traceLogAspect()")
     public void doBefore(JoinPoint joinPoint) {
-//        Object obj = joinPoint.getThis();
-//        log.info(JSON.toJSONString(obj));
-//        String traceId = null;
-//        if(obj instanceof HttpServletRequest){
-//            traceId = ((HttpServletRequest)obj).getParameter("traceId");
-//        }
-//        if (StringUtils.isEmpty(traceId)) {
-//            traceId = UUID.randomUUID().toString().replaceAll("-", "");
-//            MDC.put("traceId", traceId);
-//        }
+        String traceId = UUID.randomUUID().toString().replaceAll("-", "");
+        MDC.put("traceId", traceId);
     }
 
     /**
