@@ -53,11 +53,7 @@ public class AopAspect {
             log.error("动态赋值traceId异常", ex);
         }
     }
-
-    /**
-     * @param joinPoint
-     * @return
-     */
+    
     @Around("traceLogAspect()")
     public Object around(ProceedingJoinPoint joinPoint) {
         String interfaceName = String.format("%s.%s", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
